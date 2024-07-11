@@ -45,7 +45,17 @@ class u {
       this.debounceWithImmediate(() => {
         this.logger("iFrame Event - window resized"), this.sendIframeHeight();
       })
-    );
+    ), window.addEventListener("message", (e) => {
+      if (e.data.frequency) {
+        this.logger(
+          "iFrame Event - Received frequency: " + e.data.frequency
+        );
+        const t = document.querySelector(
+          `label[for="${e.data.frequency}"]`
+        );
+        t && t.click();
+      }
+    });
   }
   sendIframeHeight() {
     let e = document.body.offsetHeight;
@@ -63,9 +73,6 @@ class u {
       },
       "*"
     );
-  }
-  getIFrameByEvent(e) {
-    return [].slice.call(document.getElementsByTagName("iframe")).filter((t) => t.contentWindow === e.source)[0];
   }
   shouldScroll() {
     return !!document.querySelector(".ErrorMessage");
