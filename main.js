@@ -2,9 +2,12 @@ import "./style.css";
 import { logger } from "./lib/logger.js";
 import { setBodyData } from "./lib/set-body-data.js";
 import { checkNested } from "./lib/check-nested.js";
+import { iFrame } from "./lib/iframe.js";
 
 function run() {
   logger("4Site Init", "#000", "#FF0");
+
+  new iFrame();
 
   // Get the donation frequency and set the body data
   if (checkNested(window, "donationForm", "state", "donationFrequency")) {

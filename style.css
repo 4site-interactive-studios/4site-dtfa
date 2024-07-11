@@ -7,3 +7,17 @@
 body[data-4site-donation-frequency="one-time"] .nudge-wrapper {
   max-height: 65px;
 }
+
+body[data-4site-embedded] {
+  background-image: none !important;
+  background-color: #fff;
+}
+
+body[data-4site-embedded] header {
+  display: none;
+}
+body[data-4site-embedded] form {
+  margin: 0 auto !important;
+  padding: 0;
+  border: 1px solid #c8102e;
+}
