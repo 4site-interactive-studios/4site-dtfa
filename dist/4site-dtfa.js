@@ -1,7 +1,7 @@
 (function(){"use strict";try{if(typeof document<"u"){var e=document.createElement("style");e.appendChild(document.createTextNode(".nudge-wrapper{transition:all .5s ease;max-height:0;overflow:hidden}body[data-4site-donation-frequency=one-time] .nudge-wrapper{max-height:65px}body[data-4site-embedded]{background-image:none!important;background-color:#fff}body[data-4site-embedded] header{display:none}body[data-4site-embedded] form{margin:0 auto!important;padding:0;border:1px solid #c8102e}")),document.head.appendChild(e)}}catch(d){console.error("vite-plugin-css-injected-by-js",d)}})();
-const r = (n, e = "#fff", t = "#F00") => {
-  const o = `%c${n}`, i = `color: ${e}; background-color: ${t}; padding: 2px 4px; border-radius: 2px;`;
-  console.log(o, i);
+const i = (n, e = "#fff", t = "#F00") => {
+  const r = `%c${n}`, o = `color: ${e}; background-color: ${t}; padding: 2px 4px; border-radius: 2px;`;
+  console.log(r, o);
 }, s = (n, e) => {
   const t = document.querySelector("body");
   if (t) {
@@ -21,7 +21,7 @@ const r = (n, e = "#fff", t = "#F00") => {
 };
 class u {
   constructor() {
-    if (this.logger = r, this.inIframe()) {
+    if (this.logger = i, this.inIframe()) {
       this.run();
       const e = document.querySelector(".skip-link");
       e && e.remove();
@@ -68,7 +68,7 @@ class u {
     return [].slice.call(document.getElementsByTagName("iframe")).filter((t) => t.contentWindow === e.source)[0];
   }
   shouldScroll() {
-    return !1;
+    return !!document.querySelector(".ErrorMessage");
   }
   inIframe() {
     try {
@@ -78,26 +78,26 @@ class u {
     }
   }
   debounceWithImmediate(e, t = 1e3) {
-    let o, i = !0;
+    let r, o = !0;
     return (...d) => {
-      clearTimeout(o), i && (e.apply(this, d), i = !1), o = setTimeout(() => {
-        e.apply(this, d), i = !0;
+      clearTimeout(r), o && (e.apply(this, d), o = !1), r = setTimeout(() => {
+        e.apply(this, d), o = !0;
       }, t);
     };
   }
 }
 function a() {
-  if (r("4Site Init", "#000", "#FF0"), new u(), c(window, "donationForm", "state", "donationFrequency")) {
+  if (i("4Site Init", "#000", "#FF0"), new u(), c(window, "donationForm", "state", "donationFrequency")) {
     const n = window.donationForm.state.donationFrequency();
     s("donation-frequency", n), document.querySelectorAll(
       'input[name="frequency"]'
     ).forEach((t) => {
       t.addEventListener("change", () => {
-        const o = window.donationForm.state.donationFrequency();
-        s("donation-frequency", o);
+        const r = window.donationForm.state.donationFrequency();
+        s("donation-frequency", r);
       });
     });
   } else
-    r("Donation frequency not found", "#000", "#F00");
+    i("Donation frequency not found", "#000", "#F00");
 }
 document.readyState === "complete" ? a() : window.addEventListener("load", a);
